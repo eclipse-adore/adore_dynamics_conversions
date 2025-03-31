@@ -366,7 +366,7 @@ to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipantSet& msg )
 
     participant_set.participants[participant.id] = participant;
   }
-  if( msg.validity_area.points.size() > 5 )
+  if( msg.validity_area.points.size() >= 4 )
   {
     participant_set.validity_area = math::conversions::to_cpp_type( msg.validity_area );
   }
