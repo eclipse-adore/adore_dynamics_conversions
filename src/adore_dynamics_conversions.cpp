@@ -203,7 +203,8 @@ to_ros_msg( const Trajectory& trajectory )
   {
     msg.states.push_back( to_ros_msg( state ) );
   }
-  msg.label = trajectory.label;
+  msg.label           = trajectory.label;
+  msg.header.frame_id = "world";
   return msg;
 }
 
@@ -256,7 +257,7 @@ to_ros_msg( const TrafficParticipant& participant )
   // Convert classification
   msg.classification.type_id = static_cast<uint8_t>( participant.classification );
 
-  if ( participant.v2x_id.has_value() )
+  if( participant.v2x_id.has_value() )
   {
     msg.v2x_station_id = static_cast<uint64_t>( participant.v2x_id.value() );
   }
@@ -300,9 +301,9 @@ to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipant& msg )
   // Construct the participant
   TrafficParticipant participant( state, msg.tracking_id, classification, physical_parameters );
 
-  if ( msg.v2x_station_id != 0 )
+  if( msg.v2x_station_id != 0 )
   {
-    participant.v2x_id =  static_cast<uint64_t>( msg.v2x_station_id ); 
+    participant.v2x_id = static_cast<uint64_t>( msg.v2x_station_id );
   }
 
   // Optional goal point
@@ -350,6 +351,8 @@ to_ros_msg( const TrafficParticipantSet& participant_set )
   {
     msg.validity_area = math::conversions::to_ros_msg( participant_set.validity_area.value() );
   }
+
+  msg.header.frame_id = "world";
 
   return msg;
 }
