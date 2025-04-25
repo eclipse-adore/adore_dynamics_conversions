@@ -398,6 +398,8 @@ to_ros_msg( const PhysicalVehicleParameters& cpp )
   msg.steering_ratio              = cpp.steering_ratio;
   msg.steering_angle_max          = cpp.steering_angle_max;
   msg.steering_angle_min          = cpp.steering_angle_min;
+  msg.acceleration_max            = cpp.acceleration_max;
+  msg.acceleration_min            = cpp.acceleration_min;
   msg.cornering_stiffness         = cpp.cornering_stiffness;
   msg.brake_balance_front         = cpp.brake_balance_front;
   msg.acceleration_balance_front  = cpp.acceleration_balance_front;
@@ -429,6 +431,8 @@ to_cpp_type( const adore_ros2_msgs::msg::PhysicalVehicleParameters& msg )
   cpp.steering_ratio              = msg.steering_ratio;
   cpp.steering_angle_max          = msg.steering_angle_max;
   cpp.steering_angle_min          = msg.steering_angle_min;
+  cpp.acceleration_max            = msg.acceleration_max;
+  cpp.acceleration_min            = msg.acceleration_min;
   cpp.cornering_stiffness         = msg.cornering_stiffness;
   cpp.brake_balance_front         = msg.brake_balance_front;
   cpp.acceleration_balance_front  = msg.acceleration_balance_front;
