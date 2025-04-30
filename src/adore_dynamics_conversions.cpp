@@ -25,7 +25,7 @@ update_state_with_odometry( VehicleStateDynamic& state, const nav_msgs::msg::Odo
 {
   state.x = odom.pose.pose.position.x;
   state.y = odom.pose.pose.position.y;
-  state.z = odom.pose.pose.position.z;
+  state.z = 0;
 
   state.yaw_angle = adore::math::get_yaw( odom.pose.pose.orientation );
   state.vx        = odom.twist.twist.linear.x;
