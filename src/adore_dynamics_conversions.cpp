@@ -161,7 +161,6 @@ dynamic_state_to_odometry_msg( const VehicleStateDynamic& vehicle_state, rclcpp:
   // Set linear velocity
   odometry_msg.twist.twist.linear.x = vehicle_state.vx;
   odometry_msg.twist.twist.linear.y = vehicle_state.vy;
-  odometry_msg.twist.twist.linear.z = vehicle_state.ay; // Assuming 'ay' as z velocity
 
   // Set angular velocity (yaw rate)
   odometry_msg.twist.twist.angular.x = 0;
