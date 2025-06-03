@@ -8,18 +8,20 @@ project(${PROJECT})
 # Include common ROS2 and package dependencies
 include($ENV{SOURCE_DIRECTORY}/libraries/adore_libraries.cmake)
 include(requirements.cmake)
-
+set(CMAKE_CXX_STANDARD 20)
 # Ensure the Release build uses -O3 for optimization
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
   add_compile_options(-O3)
 endif()
+add_compile_options(-fPIC)
+
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 # Define a library 
-add_library(${PROJECT} STATIC
+add_library(${PROJECT} SHARED
     src/${PROJECT}.cpp
 )
 
