@@ -277,6 +277,12 @@ to_ros_msg( const TrafficParticipant& participant )
     msg.predicted_trajectory = to_ros_msg( *participant.trajectory );
   }
 
+  // Optional trajectory
+  if( participant.mrm_trajectory )
+  {
+    msg.mrm_trajectory = to_ros_msg( *participant.mrm_trajectory );
+  }
+
   // Optional route
   if( participant.route )
   {
@@ -318,6 +324,12 @@ to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipant& msg )
   if( !msg.predicted_trajectory.states.empty() )
   {
     participant.trajectory = to_cpp_type( msg.predicted_trajectory );
+  }
+
+  // mrm trajectory
+  if( !msg.mrm_trajectory.states.empty() )
+  {
+    participant.mrm_trajectory = to_cpp_type( msg.mrm_trajectory );
   }
 
   // Optional route
