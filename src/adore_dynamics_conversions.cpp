@@ -57,18 +57,20 @@ adore_ros2_msgs::msg::VehicleStateDynamic
 to_ros_msg( const VehicleStateDynamic& state )
 {
   adore_ros2_msgs::msg::VehicleStateDynamic msg;
-  msg.time           = state.time;
-  msg.x              = state.x;
-  msg.y              = state.y;
-  msg.z              = state.z;
-  msg.vx             = state.vx;
-  msg.vy             = state.vy;
-  msg.yaw_angle      = state.yaw_angle;
-  msg.yaw_rate       = state.yaw_rate;
-  msg.ax             = state.ax;
-  msg.ay             = state.ay;
-  msg.steering_angle = state.steering_angle;
-  msg.steering_rate  = state.steering_rate;
+  msg.time            = state.time;
+  msg.x               = state.x;
+  msg.y               = state.y;
+  msg.z               = state.z;
+  msg.vx              = state.vx;
+  msg.vy              = state.vy;
+  msg.yaw_angle       = state.yaw_angle;
+  msg.yaw_rate        = state.yaw_rate;
+  msg.ax              = state.ax;
+  msg.ay              = state.ay;
+  msg.steering_angle  = state.steering_angle;
+  msg.steering_rate   = state.steering_rate;
+  msg.header.frame_id = state.frame_id;
+  msg.header.stamp    = rclcpp::Time( state.time ); // Convert time to ROS time
   return msg;
 }
 
@@ -88,6 +90,7 @@ to_cpp_type( const adore_ros2_msgs::msg::VehicleStateDynamic& msg )
   state.ay             = msg.ay;
   state.steering_angle = msg.steering_angle;
   state.steering_rate  = msg.steering_rate;
+  state.frame_id       = msg.header.frame_id;
   return state;
 }
 
@@ -325,6 +328,8 @@ to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipant& msg )
   {
     participant.route = adore::map::conversions::to_cpp_type( msg.route );
   }
+
+  participant.id = msg.tracking_id;
 
   return participant;
 }
