@@ -6,12 +6,7 @@
   <maintainer email="opensource-ts@dlr.de">DLR-TS</maintainer>
   <license>TODO: License declaration</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
-
-  <depend>osqp</depend>
-  <depend>Eigen3</depend>
-  <depend>OsqpEigen</depend>
-  <depend>OpenDrive</depend>
-  <depend>adore_math</depend>
+  
   <depend>adore_dynamics</depend>
   <depend>rclcpp</depend>
   <depend>adore_ros2_msgs</depend>
