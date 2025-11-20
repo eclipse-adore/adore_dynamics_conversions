@@ -76,4 +76,19 @@ ament_export_dependencies(
 )
 ament_export_targets(export_${PROJECT_NAME})
 
+# Tests
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+
+  ament_add_gtest(test_adore_dynamics_conversions
+    test/test_adore_dynamics_conversions.cpp
+  )
+
+  if(TARGET test_adore_dynamics_conversions)
+    # Link against the library under test so it reuses the same code
+    target_link_libraries(test_adore_dynamics_conversions
+      ${PROJECT_NAME}
+    )
+  endif()
+endif()
 ament_package()
